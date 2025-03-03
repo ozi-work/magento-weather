@@ -1,0 +1,19 @@
+{
+    "name": "kyro/weather",
+    "description": "Kyro Weather Module",
+    "require": {
+        "php": ">=7.4",
+        "magento/framework": "^103.0 || ^104.0"
+    },
+    "type": "magento2-module",
+    "version": "1.0.0",
+    "license": "proprietary",
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-2": {
+            "Kyro\\Weather\\": ""
+        }
+    }
+}

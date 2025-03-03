@@ -1,0 +1,11 @@
+# Ignore everything
+*
+
+# Allow only app/code and its contents
+!src/
+!src/app/
+!src/app/code/
+!src/app/code/**
+
+# Optional: Keep .gitignore in root
+!.gitignore
