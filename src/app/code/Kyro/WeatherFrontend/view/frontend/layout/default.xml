@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<body>
+    <referenceContainer name="header.panel">
+        <block class="Kyro\WeatherFrontend\Block\Weather"
+               name="kyro_weather_widget"
+               template="Kyro_WeatherFrontend::weather.phtml"
+               after="top.links" />
+    </referenceContainer>
+</body>

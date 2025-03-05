@@ -1,0 +1,21 @@
+<div data-bind="scope: 'weatherWidget'">
+    <div data-bind="text: locationName"></div>
+    <div data-bind="text: country"></div>
+    <div data-bind="text: temperature"></div>
+    <div data-bind="text: conditionText"></div>
+    <div data-bind="html: conditionIcon"></div>
+</div>
+
+<script type="text/x-magento-init">
+{
+    "*": {
+        "Kyro_WeatherFrontend/js/weather-widget": {
+            "locationName": "<?php echo $block->escapeHtml($block->getWeatherData()->getLocationName()); ?>",
+            "country": "<?php echo $block->escapeHtml($block->getWeatherData()->getCountry()); ?>",
+            "temperature": "<?php echo $block->escapeHtml($block->getWeatherData()->getTemperature()); ?>",
+            "conditionText": "<?php echo $block->escapeHtml($block->getWeatherData()->getConditionText()); ?>",
+            "conditionIcon": "<?php echo $block->escapeHtml($block->getWeatherData()->getConditionIcon()); ?>"
+        }
+    }
+}
+</script>

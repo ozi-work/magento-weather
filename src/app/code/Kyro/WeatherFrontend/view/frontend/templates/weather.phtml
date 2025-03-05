@@ -1,0 +1,13 @@
+<?php
+if($block->isEnabled()):
+    /** @var \Kyro\Weather\Api\Data\WeatherDataInterface $weatherData */
+    $weatherData = $block->getWeatherData();
+    ?>
+    <div class="kyro-weather-widget ">
+        <div class="temperature"> <?= $block->escapeHtml($weatherData->getTemperature()) ?>°C</div>
+        <div class="condition">
+            <img src="<?= $block->escapeUrl($weatherData->getConditionIcon()) ?>"
+                 alt="<?= $block->escapeHtml($weatherData->getConditionText()) ?>" />
+        </div>
+    </div>
+<?php endif; ?>
