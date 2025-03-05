@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <kyro_weather>
+            <weatherapi>
+                <enabled>0</enabled>
+                <api_url>http://api.weatherapi.com/v1/current.json</api_url>
+            </weatherapi>
+            <weatherstack>
+                <enabled>0</enabled>
+                <api_url>http://api.weatherstack.com/current</api_url>
+            </weatherstack>
+        </kyro_weather>
+    </default>
+</config>

@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework/ObjectManager/etc/config.xsd">
+    <!-- standard di preferences -->
+    <preference for="Kyro\WeatherApi\Api\WeatherApiServiceInterface"
+                type="Kyro\WeatherApi\Model\WeatherApiService"/>
+
+    <!-- API providers -->
+    <type name="Kyro\WeatherApi\Model\WeatherApiService">
+        <arguments>
+            <argument name="providers" xsi:type="array">
+                <item name="provider1" xsi:type="string">weatherapi</item>
+                <item name="provider2" xsi:type="string">weatherstack</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <!-- logger injection -->
+    <type name="\Kyro\WeatherApi\Model\WeatherApiService">
+        <arguments>
+            <argument name="logger" xsi:type="object">Kyro\Weather\Model\Logger\WeatherLogger</argument>
+        </arguments>
+    </type>
+</config>

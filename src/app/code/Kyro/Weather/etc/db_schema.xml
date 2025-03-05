@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="kyro_weather_data" resource="default" engine="innodb" comment="Kyro Weather Data Table">
+        <column xsi:type="int" name="id" unsigned="true" nullable="false" identity="true" comment="Primary key"/>
+        <column xsi:type="varchar" name="ip" nullable="false" length="45" comment="IP Address of the User"/>
+        <column xsi:type="varchar" name="location_name" nullable="false" length="255" comment="Location Name (City)"/>
+        <column xsi:type="varchar" name="country" nullable="true" length="50" comment="Country"/>
+        <column xsi:type="decimal" name="temperature" nullable="false" scale="2" precision="4" comment="Current Temperature"/>
+        <column xsi:type="varchar" name="condition_text" nullable="false" length="30" comment="Weather Condition Text"/>
+        <column xsi:type="varchar" name="condition_icon" nullable="true" length="255" comment="Weather Condition Icon URL"/>
+        <column xsi:type="timestamp" name="updated_at" nullable="false" default="CURRENT_TIMESTAMP" on_update="true" comment="Last Update Timestamp"/>
+
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="id"/>
+        </constraint>
+
+        <!-- Index for ip_address -->
+        <constraint xsi:type="unique" referenceId="KYRO_WEATHER_DATA_IP_UNIQUE">
+            <column name="ip"/>
+        </constraint>
+
+        <!-- Index for location_name and country -->
+        <index referenceId="KYRO_WEATHER_DATA_LOCATION_INDEX" indexType="btree">
+            <column name="location_name" />
+            <column name="country" />
+        </index>
+    </table>
+</schema>

@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework/ObjectManager/etc/config.xsd">
+    <!-- standard weather service preference -->
+    <preference for="Kyro\Weather\Api\WeatherServiceInterface"
+                type="Kyro\Weather\Model\WeatherService"/>
+
+    <!-- standard preferences -->
+    <preference for="Kyro\Weather\Api\Data\WeatherDataInterface"
+                type="Kyro\Weather\Model\WeatherData"/>
+    <preference for="Kyro\Weather\Api\WeatherDataRepositoryInterface"
+                type="Kyro\Weather\Model\WeatherDataRepository"/>
+    <preference for="Kyro\Weather\Api\Data\WeatherDataSearchResultsInterface"
+                type="Kyro\Weather\Model\Data\WeatherDataSearchResults"/>
+
+    <!-- logger virtual handlers -->
+    <virtualType name="Kyro\Weather\Model\Logger\DebugHandler" type="\Kyro\Weather\Model\Logger\HandlerBase">
+        <arguments>
+            <argument name="filesystem" xsi:type="object">Magento\Framework\Filesystem\Driver\File</argument>
+            <argument name="filePath" xsi:type="const">\Kyro\Weather\Model\Logger\HandlerBase::BASE_LOG_FOLDER</argument>
+            <argument name="fileName" xsi:type="string">debug.log</argument>
+            <argument name="loggerType" xsi:type="const">\Monolog\Logger::DEBUG</argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="Kyro\Weather\Model\Logger\ErrorHandler" type="\Kyro\Weather\Model\Logger\HandlerBase">
+        <arguments>
+            <argument name="filePath" xsi:type="const">\Kyro\Weather\Model\Logger\HandlerBase::BASE_LOG_FOLDER</argument>
+            <argument name="fileName" xsi:type="string">error.log</argument>
+            <argument name="loggerType" xsi:type="const">\Monolog\Logger::ERROR</argument>
+        </arguments>
+    </virtualType>
+
+    <!-- logger virtual type -->
+    <virtualType name="Kyro\Weather\Model\Logger\WeatherLogger" type="Monolog\Logger">
+        <arguments>
+            <argument name="name" xsi:type="string">WeatherLog</argument>
+            <argument name="handlers" xsi:type="array">
+                <item name="debug" xsi:type="object">Kyro\Weather\Model\Logger\DebugHandler</item>
+                <item name="error" xsi:type="object">Kyro\Weather\Model\Logger\ErrorHandler</item>
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <!-- logger injection -->
+    <type name="Kyro\Weather\Model\WeatherService">
+        <arguments>
+            <argument name="logger" xsi:type="object">Kyro\Weather\Model\Logger\WeatherLogger</argument>
+        </arguments>
+    </type>
+</config>

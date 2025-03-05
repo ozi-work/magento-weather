@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="kyro_extensions" translate="label" sortOrder="10">
+            <label>Kyro Extensions</label>
+        </tab>
+        <section id="kyro_weather" type="text" sortOrder="100" showInDefault="1" showInWebsite="0" showInStore="0">
+            <class>separator-top</class>
+            <label>Weather</label>
+            <tab>kyro_extensions</tab>
+            <resource>Kyro_WeatherApi::config</resource>
+            <group id="weatherapi" type="text" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>Weatherapi provider</label>
+                <field id="enabled" type="select" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Enabled</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="api_url" type="text" sortOrder="20" showInDefault="1"
+                       showInWebsite="0" showInStore="0">
+                    <label>Api Url</label>
+                    <comment>Weatherapi api url</comment>
+                </field>
+                <field id="api_key" type="text" sortOrder="30" showInDefault="1"
+                       showInWebsite="0" showInStore="0">
+                    <label>Api Key</label>
+                    <comment>Weatherapi api key</comment>
+                </field>
+            </group>
+            <group id="weatherstack" type="text" sortOrder="30" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>Weatherstack provider</label>
+                <field id="enabled" type="select" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Enabled</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="api_url" type="text" sortOrder="20" showInDefault="1"
+                       showInWebsite="0" showInStore="0">
+                    <label>Api Url</label>
+                    <comment>Weatherstack api url</comment>
+                </field>
+                <field id="api_key" type="text" sortOrder="30" showInDefault="1"
+                       showInWebsite="0" showInStore="0">
+                    <label>Api Key</label>
+                    <comment>Weatherstack api key</comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>
